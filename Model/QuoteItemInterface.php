@@ -12,10 +12,10 @@
 
 namespace CoreShop\Component\Order\Model;
 
-interface OrderItemInterface extends SaleItemInterface
+interface QuoteItemInterface extends SaleItemInterface
 {
     /**
-     * @return OrderInterface
+     * @return QuoteInterface
      */
-    public function getOrder();
+    public function getQuote();
 }

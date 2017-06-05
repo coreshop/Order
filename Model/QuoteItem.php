@@ -15,30 +15,30 @@ namespace CoreShop\Component\Order\Model;
 use CoreShop\Component\Resource\ImplementedByPimcoreException;
 use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
 
-class OrderItem extends SaleItem implements OrderItemInterface
+class QuoteItem extends SaleItem implements QuoteItemInterface
 {
     /**
      * {@inheritdoc}
      */
     public function getSaleDocument()
     {
-        return $this->getOrder();
+        return $this->getQuote();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getOrder()
+    public function getQuote()
     {
         $parent = $this->getParent();
 
         do {
-            if (is_subclass_of($parent, OrderInterface::class)) {
+            if (is_subclass_of($parent, QuoteInterface::class)) {
                 return $parent;
             }
             $parent = $parent->getParent();
         } while ($parent != null);
 
-        throw new \InvalidArgumentException("Order could not be found!");
+        throw new \InvalidArgumentException("Quote could not be found!");
     }
 }
