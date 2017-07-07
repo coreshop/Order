@@ -30,15 +30,9 @@ interface PurchasableInterface
     public function getName($language = null);
 
     /**
-     * @param bool $withTax
      * @return int
      */
-    public function getPrice($withTax = true);
-
-    /**
-     * @return int
-     */
-    public function getBasePrice();
+    public function getPrice();
 
     /**
      * @return int
