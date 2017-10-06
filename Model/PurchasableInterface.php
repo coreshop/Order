@@ -12,11 +12,10 @@
 
 namespace CoreShop\Component\Order\Model;
 
-
 use CoreShop\Component\Core\Model\TaxRuleGroupInterface;
+use CoreShop\Component\StorageList\Model\StorageListProductInterface;
 
-
-interface PurchasableInterface
+interface PurchasableInterface extends StorageListProductInterface
 {
     /**
      * @return int
