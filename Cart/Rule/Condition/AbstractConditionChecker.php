@@ -8,22 +8,27 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Order\Cart\Rule\Condition;
 
 use CoreShop\Component\Order\Model\CartInterface;
 use CoreShop\Component\Order\Model\CartPriceRuleVoucherCodeInterface;
+use Webmozart\Assert\Assert;
 
-class VoucherConditionChecker extends AbstractConditionChecker
+abstract class AbstractConditionChecker implements CartRuleConditionCheckerInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function isCartRuleValid(CartInterface $cart, CartPriceRuleVoucherCodeInterface $voucher, array $configuration)
+    public function isValid($subject, array $configuration)
     {
-        //@todo: implement validation!
+        Assert::isArray($subject);
+        Assert::keyExists($subject, 'cart');
+        Assert::keyExists($subject, 'voucher');
+        Assert::isInstanceOf($subject['cart'], CartInterface::class);
+        Assert::isInstanceOf($subject['voucher'], CartPriceRuleVoucherCodeInterface::class);
 
-        return true;
+        return $this->isCartRuleValid($subject['cart'], $subject['voucher'], $configuration);
     }
 }
