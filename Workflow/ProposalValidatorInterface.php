@@ -14,6 +14,9 @@ namespace CoreShop\Component\Order\Workflow;
 
 use CoreShop\Component\Order\Model\ProposalInterface;
 
+/**
+ * @deprecated remove this after state machine is implemented.
+ */
 interface ProposalValidatorInterface
 {
     /**
