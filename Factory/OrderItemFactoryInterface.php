@@ -12,18 +12,16 @@
 
 declare(strict_types=1);
 
-namespace CoreShop\Component\Order\Checkout;
+namespace CoreShop\Component\Order\Factory;
 
 use CoreShop\Component\Order\Model\OrderInterface;
+use CoreShop\Component\Order\Model\OrderItemInterface;
+use CoreShop\Component\Order\Model\PurchasableInterface;
+use CoreShop\Component\Resource\Factory\FactoryInterface;
 
-interface ValidationCheckoutStepInterface
+interface OrderItemFactoryInterface extends FactoryInterface
 {
-    /**
-     * Validates Step.
-     *
-     * @param OrderInterface $cart
-     *
-     * @return bool
-     **/
-    public function validate(OrderInterface $cart): bool;
+    public function createWithCart(OrderInterface $cart, PurchasableInterface $purchasable, float $quantity = 1.0): OrderItemInterface;
+
+    public function createWithPurchasable(PurchasableInterface $purchasable, float $quantity = 1.0): OrderItemInterface;
 }

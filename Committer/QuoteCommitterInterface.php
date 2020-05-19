@@ -10,12 +10,13 @@
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
  */
 
-namespace CoreShop\Component\Order\Model;
+declare(strict_types=1);
 
-interface QuoteItemInterface extends SaleItemInterface
+namespace CoreShop\Component\Order\Committer;
+
+use CoreShop\Component\Order\Model\OrderInterface;
+
+interface QuoteCommitterInterface
 {
-    /**
-     * @return QuoteInterface
-     */
-    public function getQuote();
+    public function commitOrder(OrderInterface $order): void;
 }

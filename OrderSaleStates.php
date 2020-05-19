@@ -12,16 +12,11 @@
 
 declare(strict_types=1);
 
-namespace CoreShop\Component\Order\NumberGenerator;
+namespace CoreShop\Component\Order;
 
-use CoreShop\Component\Resource\Model\ResourceInterface;
-
-interface NumberGeneratorInterface
+final class OrderSaleStates
 {
-    /**
-     * @param ResourceInterface $model
-     *
-     * @return string
-     */
-    public function generate(ResourceInterface $model): string;
+    const STATE_CART = 'cart';
+    const STATE_ORDER = 'order';
+    const STATE_QUOTE = 'quote';
 }

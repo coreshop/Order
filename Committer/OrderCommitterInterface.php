@@ -10,19 +10,13 @@
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
  */
 
-namespace CoreShop\Component\Order\Transformer;
+declare(strict_types=1);
 
-use CoreShop\Component\Order\Model\ProposalInterface;
+namespace CoreShop\Component\Order\Committer;
 
-interface ProposalTransformerInterface
+use CoreShop\Component\Order\Model\OrderInterface;
+
+interface OrderCommitterInterface
 {
-    /**
-     * Transforms one proposal to another.
-     *
-     * @param ProposalInterface $fromProposal
-     * @param ProposalInterface $toProposal
-     *
-     * @return mixed
-     */
-    public function transform(ProposalInterface $fromProposal, ProposalInterface $toProposal);
+    public function commitOrder(OrderInterface $order): void;
 }

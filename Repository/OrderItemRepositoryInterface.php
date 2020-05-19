@@ -12,16 +12,16 @@
 
 declare(strict_types=1);
 
-namespace CoreShop\Component\Order\NumberGenerator;
+namespace CoreShop\Component\Order\Repository;
 
-use CoreShop\Component\Resource\Model\ResourceInterface;
+use CoreShop\Component\Order\Model\OrderItemInterface;
+use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
 
-interface NumberGeneratorInterface
+interface OrderItemRepositoryInterface extends PimcoreRepositoryInterface
 {
     /**
-     * @param ResourceInterface $model
-     *
-     * @return string
+     * @param int $productId
+     * @return OrderItemInterface[]
      */
-    public function generate(ResourceInterface $model): string;
+    public function findOrderItemsByProductId(int $productId): array;
 }

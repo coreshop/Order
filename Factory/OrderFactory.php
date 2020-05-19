@@ -12,18 +12,15 @@
 
 declare(strict_types=1);
 
-namespace CoreShop\Component\Order\Context;
+namespace CoreShop\Component\Order\Factory;
 
-use CoreShop\Component\Order\Model\OrderInterface;
-use CoreShop\Component\Order\OrderInvoiceStates;
-use CoreShop\Component\Order\OrderPaymentStates;
-use CoreShop\Component\Order\OrderSaleStates;
-use CoreShop\Component\Order\OrderShipmentStates;
-use CoreShop\Component\Order\OrderStates;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
 
-final class CartContext implements CartContextInterface
+class OrderFactory implements FactoryInterface
 {
+    /**
+     * @var FactoryInterface
+     */
     private $cartFactory;
 
     public function __construct(FactoryInterface $cartFactory)
@@ -34,19 +31,11 @@ final class CartContext implements CartContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCart(): OrderInterface
+    public function createNew()
     {
-        /**
-         * @var OrderInterface $cart
-         */
         $cart = $this->cartFactory->createNew();
-        $cart->setKey(uniqid());
+        $cart->setKey(uniqid('cart', true));
         $cart->setPublished(true);
-        $cart->setSaleState(OrderSaleStates::STATE_CART);
-        $cart->setOrderState(OrderStates::STATE_INITIALIZED);
-        $cart->setShippingState(OrderShipmentStates::STATE_NEW);
-        $cart->setPaymentState(OrderPaymentStates::STATE_NEW);
-        $cart->setInvoiceState(OrderInvoiceStates::STATE_NEW);
 
         return $cart;
     }

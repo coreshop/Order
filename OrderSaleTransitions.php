@@ -12,16 +12,13 @@
 
 declare(strict_types=1);
 
-namespace CoreShop\Component\Order\NumberGenerator;
+namespace CoreShop\Component\Order;
 
-use CoreShop\Component\Resource\Model\ResourceInterface;
-
-interface NumberGeneratorInterface
+final class OrderSaleTransitions
 {
-    /**
-     * @param ResourceInterface $model
-     *
-     * @return string
-     */
-    public function generate(ResourceInterface $model): string;
+    const IDENTIFIER = 'coreshop_order_sales_type';
+
+    const TRANSITION_ORDER = 'order';
+    const TRANSITION_CART = 'cart';
+    const TRANSITION_QUOTE = 'quote';
 }

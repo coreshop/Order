@@ -10,29 +10,13 @@
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
  */
 
-namespace CoreShop\Component\Order\Model;
+declare(strict_types=1);
 
-use Carbon\Carbon;
+namespace CoreShop\Component\Order\Cart;
 
-interface QuoteInterface extends SaleInterface
+use CoreShop\Component\StorageList\StorageListModifierInterface;
+
+interface CartModifierInterface extends StorageListModifierInterface
 {
-    /**
-     * @return Carbon
-     */
-    public function getQuoteDate();
 
-    /**
-     * @param Carbon $quoteDate
-     */
-    public function setQuoteDate($quoteDate);
-
-    /**
-     * @return string
-     */
-    public function getQuoteNumber();
-
-    /**
-     * @param string $quoteNumber
-     */
-    public function setQuoteNumber($quoteNumber);
 }
