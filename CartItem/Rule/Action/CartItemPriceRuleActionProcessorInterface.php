@@ -12,20 +12,20 @@
 
 declare(strict_types=1);
 
-namespace CoreShop\Component\Order\Cart\Rule\Action;
+namespace CoreShop\Component\Order\CartItem\Rule\Action;
 
-use CoreShop\Component\Order\Model\OrderInterface;
+use CoreShop\Component\Order\Model\OrderItemInterface;
 use CoreShop\Component\Order\Model\PriceRuleItemInterface;
 
-interface CartPriceRuleActionProcessorInterface
+interface CartItemPriceRuleActionProcessorInterface
 {
     /**
-     * Apply Rule to Cart.
+     * Apply Rule to Order Item
      */
-    public function applyRule(OrderInterface $cart, array $configuration, PriceRuleItemInterface $cartPriceRuleItem): bool;
+    public function applyRule(OrderItemInterface $orderItem, array $configuration, PriceRuleItemInterface $cartPriceRuleItem): bool;
 
     /**
-     * Remove Rule from Cart.
+     * Remove Rule from Order Item
      */
-    public function unApplyRule(OrderInterface $cart, array $configuration, PriceRuleItemInterface $cartPriceRuleItem): bool;
+    public function unApplyRule(OrderItemInterface $orderItem, array $configuration, PriceRuleItemInterface $cartPriceRuleItem): bool;
 }

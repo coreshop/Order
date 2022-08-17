@@ -12,14 +12,14 @@
 
 declare(strict_types=1);
 
-namespace CoreShop\Component\Order\Cart\Rule;
+namespace CoreShop\Component\Order\CartItem\Rule\Condition;
 
 use CoreShop\Component\Order\Model\CartPriceRuleInterface;
 use CoreShop\Component\Order\Model\CartPriceRuleVoucherCodeInterface;
-use CoreShop\Component\Order\Model\OrderInterface;
-use CoreShop\Component\Order\Model\PriceRuleItemInterface;
+use CoreShop\Component\Order\Model\OrderItemInterface;
+use CoreShop\Component\Rule\Condition\ConditionCheckerInterface;
 
-interface ProposalCartPriceRuleCalculatorInterface
+interface OrderItemActionConditionCheckerInterface extends ConditionCheckerInterface
 {
-    public function calculatePriceRule(OrderInterface $cart, CartPriceRuleInterface $cartPriceRule, CartPriceRuleVoucherCodeInterface $voucherCode = null): ?PriceRuleItemInterface;
+    public function isValidForOrderItem(OrderItemInterface $orderItem, CartPriceRuleInterface $cartPriceRule, ?CartPriceRuleVoucherCodeInterface $voucher, array $configuration): bool;
 }
