@@ -16,11 +16,20 @@ declare(strict_types=1);
  *
  */
 
-namespace CoreShop\Component\Order\Manager;
+namespace CoreShop\Component\Order\Modifier;
 
 use CoreShop\Component\Order\Model\OrderInterface;
 
-interface CartManagerInterface
+class ImmutabilityModifier implements ImmutabilityModifierInterface
 {
-    public function persistCart(OrderInterface $cart/*, array $params = []*/): void;
+    public function makeImmutable(OrderInterface $order): void
+    {
+        $order->setImmutable(true);
+        $order->save();
+
+        foreach ($order->getItems() as $item) {
+            $item->setImmutable(true);
+            $item->save();
+        }
+    }
 }

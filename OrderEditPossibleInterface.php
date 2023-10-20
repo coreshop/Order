@@ -16,11 +16,11 @@ declare(strict_types=1);
  *
  */
 
-namespace CoreShop\Component\Order\Manager;
+namespace CoreShop\Component\Order;
 
 use CoreShop\Component\Order\Model\OrderInterface;
 
-interface CartManagerInterface
+interface OrderEditPossibleInterface
 {
-    public function persistCart(OrderInterface $cart/*, array $params = []*/): void;
+    public function isOrderEditable(OrderInterface $order): bool;
 }
