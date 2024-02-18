@@ -16,15 +16,20 @@ declare(strict_types=1);
  *
  */
 
-namespace CoreShop\Component\Order\Calculator;
+namespace CoreShop\Component\Order\Model;
 
-use CoreShop\Component\Order\Model\OrderItemAttributeInterface;
-use CoreShop\Component\Order\Model\PurchasableInterface;
+use CoreShop\Component\Resource\Model\ResourceInterface;
 
-interface PurchasableCustomAttributesCalculatorInterface
+interface OrderItemAttributeInterface extends ResourceInterface
 {
-    /**
-     * @return array<OrderItemAttributeInterface>
-     */
-    public function getCustomAttributes(PurchasableInterface $purchasable, array $context): array;
+
+    public function getId(): ?int;
+
+    public function getAttributeKey(): ?string;
+
+    public function setAttributeKey(?string $attributeKey);
+
+    public function getAttributeValue();
+
+    public function setAttributeValue($attributeValue);
 }
